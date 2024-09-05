@@ -12,5 +12,5 @@ Currently, two official plugins are available:
 used in project  :
 1. for UI: shadcn/ui,
 2. for DB: supabse,
-3. password for db : TalentBridge@9499
+3. password for db : 
 4. clerk
