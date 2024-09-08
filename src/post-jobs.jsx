@@ -24,6 +24,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { BarLoader } from "react-spinners";
 import { z } from "zod";
 
+
 const schema = z.object({
   title: z.string().min(1, { message: "Title is required" }),
   description: z.string().min(1, { message: "Description is required" }),
@@ -158,6 +159,7 @@ const PostJob = () => {
           <p className="text-red-500">{errors.company_id.message}</p>
         )}
 
+        <div data-color-mode="dark" >
         <Controller
           name="requirements"
           control={control}
@@ -165,6 +167,7 @@ const PostJob = () => {
             <MDEditor value={field.value} onChange={field.onChange} />
           )}
         />
+        </div>
         {errors.requirements && (
           <p className="text-red-500">{errors.requirements.message}</p>
         )}
