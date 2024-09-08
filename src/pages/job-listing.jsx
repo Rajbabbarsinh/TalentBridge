@@ -45,6 +45,13 @@ const JobListing = () => {
     return <BarLoader className="mb-4" width={"100%"} color="#36d7b7" />;
   }
 
+
+  const clearFilters = () => {
+    setsearchQuery("")
+    setCompany_id("")
+    setLocation("")
+  }
+
   return ( 
       <div>
     <h1 className='gradient-title font-extrabold text-6 sm:text-7xl text-center pb-8' >Latest Jobs</h1>
@@ -64,7 +71,7 @@ const JobListing = () => {
   </form>
 
 
-  <div>
+  <div className='flex flex-col sm:flex-row gap-2' >
   <Select value={location} onValueChange={(value)=> setLocation(value)} >
       <SelectTrigger>
         <SelectValue placeholder="filter by location" />
@@ -80,6 +87,24 @@ const JobListing = () => {
         </SelectGroup>
       </SelectContent>
     </Select>
+ 
+  <Select value={company_id} onValueChange={(value)=> setCompany_id(value)} >
+      <SelectTrigger>
+        <SelectValue placeholder="filter by Company" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectGroup>
+          {companies?.map(({ name, id}) =>{
+            return (
+          <SelectItem key={name} value={id} >
+            {name}
+          </SelectItem> 
+           )})}
+        </SelectGroup>
+      </SelectContent>
+    </Select>
+
+ <Button onClick={clearFilters} variant='destructive' className='sm:w-1/2' >Clear Filters</Button>
   </div>
 
   {loadingJobs && (
